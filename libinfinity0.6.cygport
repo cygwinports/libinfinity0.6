@@ -1,0 +1,69 @@
+NAME="libinfinity0.6"
+VERSION=0.6.6
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="Infinote collaborative text editing protocol library"
+DESCRIPTION="libinfinity is an implementation of the Infinote collaborative
+text editing protocol written in GObject-based C."
+HOMEPAGE="http://gobby.github.io/"
+SRC_URI="http://releases.0x539.de/libinfinity/libinfinity-${VERSION}.tar.gz"
+SRC_DIR="libinfinity-${VERSION}"
+PATCH_URI="
+	0.6.6-cygwin-module.patch
+	0.6.6-no-undefined.patch
+"
+
+PKG_NAMES="libinfinity0.6_0 libinfinity0.6-devel
+	   libinfgtk3_0.6_0 libinfgtk3_0.6-devel
+	   infinoted0.6 infinoted0.6-devel"
+libinfinity0_6_0_SUMMARY="${SUMMARY} (runtime)"
+libinfinity0_6_0_CONTENTS="
+	usr/bin/cyginfinity-0.6-0.dll
+	usr/bin/cyginftext-0.6-0.dll
+	usr/share/doc/
+	usr/share/locale/
+"
+libinfinity0_6_devel_SUMMARY="${SUMMARY} (development)"
+libinfinity0_6_devel_CONTENTS="
+	usr/include/libinfinity-0.6/
+	usr/include/libinftext-0.6/
+	usr/lib/libinfinity-0.6.dll.a
+	usr/lib/libinftext-0.6.dll.a
+	usr/lib/pkgconfig/libinfinity-0.6.pc
+	usr/lib/pkgconfig/libinftext-0.6.pc
+"
+libinfgtk3_0_6_0_SUMMARY="GTK+ ${SUMMARY} (runtime)"
+libinfgtk3_0_6_0_CONTENTS="
+	etc/
+	usr/bin/*gtk3-0.6-0.dll
+	usr/share/icons/
+"
+libinfgtk3_0_6_devel_SUMMARY="GTK+ ${SUMMARY} (development)"
+libinfgtk3_0_6_devel_CONTENTS="
+	usr/include/libinf*gtk3-0.6/
+	usr/lib/libinf*gtk3-0.6.dll.a
+	usr/lib/pkgconfig/libinf*gtk3-0.6.pc
+"
+infinoted0_6_CATEGORY="Net"
+infinoted0_6_SUMMARY="Infinote collaborative text editing protocol server"
+infinoted0_6_CONTENTS="
+	usr/bin/cyginfinoted-plugin-manager-0.6-0.dll
+	usr/bin/infinoted-0.6.exe
+	usr/lib/infinoted-0.6/
+	usr/share/man/man1/
+	var/run/
+"
+infinoted0_6_devel_CATEGORY="Net"
+infinoted0_6_devel_SUMMARY="${infinoted0_6_SUMMARY} (plugin development)"
+infinoted0_6_devel_CONTENTS="
+	usr/include/libinfinoted-plugin-manager-0.6/
+	usr/lib/libinfinoted-plugin-manager-0.6.dll.a
+	usr/lib/pkgconfig/libinfinoted-plugin-manager-0.6.pc
+"
+
+
+DIFF_EXCLUDES="inf-config.h"
+
+CYGCONF_ARGS="--with-gtk3"
+KEEPDIRS="/var/run/infinoted-0.6"
+KEEP_LA_FILES="none"

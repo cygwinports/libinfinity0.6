@@ -1,0 +1,18 @@
+--- origsrc/libinfinity-0.6.6/infinoted/infinoted-plugin-manager.c	2015-04-03 11:16:45.627805000 -0500
++++ src/libinfinity-0.6.6/infinoted/infinoted-plugin-manager.c	2015-06-01 17:56:11.087443500 -0500
+@@ -365,12 +365,11 @@ infinoted_plugin_manager_load_plugin(Inf
+   priv = INFINOTED_PLUGIN_MANAGER_PRIVATE(manager);
+ 
+   plugin_basename = g_strdup_printf(
+-    "libinfinoted-plugin-%s.%s",
+-    plugin_name,
+-    G_MODULE_SUFFIX
++    "infinoted-plugin-%s",
++    plugin_name
+   );
+ 
+-  plugin_filename = g_build_filename(plugin_path, plugin_basename, NULL);
++  plugin_filename = g_module_build_path(plugin_path, plugin_basename);
+   g_free(plugin_basename);
+ 
+   module = g_module_open(plugin_filename, G_MODULE_BIND_LOCAL);
