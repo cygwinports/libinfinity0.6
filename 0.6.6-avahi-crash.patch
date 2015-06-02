@@ -1,0 +1,14 @@
+Triggered by Gobby
+
+--- origsrc/libinfinity-0.6.6/libinfinity/common/inf-discovery-avahi.c	2015-05-11 22:05:22.249227100 -0500
++++ src/libinfinity-0.6.6/libinfinity/common/inf-discovery-avahi.c	2015-06-01 21:58:30.769748700 -0500
+@@ -478,7 +478,8 @@ inf_discovery_avahi_service_browser_call
+   avahi = INF_DISCOVERY_AVAHI(userdata);
+   priv = INF_DISCOVERY_AVAHI_PRIVATE(avahi);
+   info = g_hash_table_lookup(priv->discovered, type);
+-  g_assert(info != NULL);
++  if (!info)
++    return;
+ 
+   switch(event)
+   {
