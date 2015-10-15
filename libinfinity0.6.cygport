@@ -1,5 +1,5 @@
 NAME="libinfinity0.6"
-VERSION=0.6.6
+VERSION=0.6.7
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Infinote collaborative text editing protocol library"
